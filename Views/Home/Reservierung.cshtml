@@ -1,0 +1,35 @@
+﻿@model WebApp.Model.AusleiheDto
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Reservierung</title>
+</head>
+<body>
+<div>
+    <h1>Reservierung</h1>
+    <p>Bis wann möchten Sie das Auto ausleihen?</p>
+    <form asp-action="Reservierung" method="post">
+        <input type="date" asp-for="Rueckgabe" />
+        <button type="submit">Reservieren</button>
+    </form>
+    @if (ViewData.ModelState.ErrorCount > 0)
+    {
+        <div>
+            <ul>
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            </ul>
+        </div>
+    }
+</div>
+</body>
+</html>

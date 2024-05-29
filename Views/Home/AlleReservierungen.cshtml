@@ -1,0 +1,53 @@
+﻿@model WebApp.Model.AusleihungenDto
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alle Reservierungen</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <a href="/home/index"><button style="background-color: dodgerblue; ">zurueck</button></a>
+    <h1>Alle Reservierungen</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Fahrzeug</th>
+            <th>Person</th>
+            <th>Ausleihedatum</th>
+            <th>Rückgabedatum</th>
+        </tr>
+        </thead>
+        <tbody>
+        @for (int i = 0; i < Model.Ausleihungen.Count; i++)
+        {
+            <tr>
+                <td>@Model.FahrzeugeList[i].Kennzeichen</td>
+                <td>@Model.PersonenList[i].Name</td>
+                <td>@Model.Ausleihungen[i].Ausleihdatum.ToString("dd.MM.yyyy")</td>
+                <td>@Model.Ausleihungen[i].Rueckgabedatum.ToString("dd.MM.yyyy")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

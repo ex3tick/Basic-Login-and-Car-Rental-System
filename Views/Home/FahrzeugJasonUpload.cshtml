@@ -1,0 +1,41 @@
+﻿@model dynamic
+
+@{
+Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>JSON Datei Upload</title>
+</head>
+<body>
+<div>
+    <h2>JSON Datei Upload</h2>
+    <form asp-action="FahrzeugJasonUpload" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="file">Wählen Sie eine JSON-Datei aus:</label>
+            <input type="file" id="file" name="file" accept=".json" />
+        </div>
+        <div>
+            <button type="submit">Datei hochladen</button>
+        </div>
+    </form>
+    <div>
+        @if (!string.IsNullOrEmpty(ViewBag.Message))
+        {
+        <p>@ViewBag.Message</p>
+        }
+
+        @if (ViewData.ModelState.Count > 0)
+        {
+        foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+        <p>@error.ErrorMessage</p>
+        }
+        }
+    </div>
+</div>
+</body>
+</html>

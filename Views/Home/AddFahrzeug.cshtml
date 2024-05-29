@@ -1,0 +1,40 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model WebApp.Model.FahrzeugModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Neues Fahrzeug hinzufügen</title>
+</head>
+<body>
+<h1>Neues Fahrzeug hinzufügen</h1>
+
+<form asp-action="AddFahrzeug" method="post">
+    <div>
+        <label asp-for="Kennzeichen"></label>
+        <input asp-for="Kennzeichen" class="form-control" />
+        <span asp-validation-for="Kennzeichen" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Leistung"></label>
+        <input asp-for="Leistung" class="form-control" />
+        <span asp-validation-for="Leistung" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Kilometerstand"></label>
+        <input asp-for="Kilometerstand" class="form-control" />
+        <span asp-validation-for="Kilometerstand" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Belegt"></label>
+        <input asp-for="Belegt" type="checkbox" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Hinzufügen</button>
+</form>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.2/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate.unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
